@@ -117,6 +117,71 @@ int main(void)
 				system("cls");
 				system("title Supprimer un contact");
 				system("echo.");
+				fp = fopen("base.txt", "r");
+				i=0;
+				puts("donnez un entrée");
+				scanf("%d", &x);
+				printf("	id	|");
+				printf("	Nom	|");
+				printf("	prenom	|");
+				printf("	numero		|");
+				printf("	mail	\n");
+				puts("-----------------------------------------------------------------------------------------------------------");
+				for (i=0; i<x-1; i++)
+				{
+					fscanf(fp, "%d", &id[i]);
+					fscanf(fp, "%s", &name);
+					fscanf(fp, "%s", &lname);
+					fscanf(fp, "%d", &tel[i]);
+					fscanf(fp, "%s", &adr);
+					nom[i]=name;
+					prenom[i]=lname;
+					am[i]=adr;
+					fprintf(ft"	%d	|", id[i]);
+					fprintf("	%s	|", name);
+					fprintf("	%s	|", lname);
+					fprintf("	%d	|", tel[i]);
+					fprintf("	%s	\n", adr);
+				}
+				for (i=x+1; i<z; i++)
+				{
+					fscanf(fp, "%d", &id[i]);
+					fscanf(fp, "%s", &name);
+					fscanf(fp, "%s", &lname);
+					fscanf(fp, "%d", &tel[i]);
+					fscanf(fp, "%s", &adr);
+					nom[i]=name;
+					prenom[i]=lname;
+					am[i]=adr;
+					fprintf("	%d	|", id[i]);
+					fprintf("	%s	|", name);
+					fprintf("	%s	|", lname);
+					fprintf("	%d	|", tel[i]);
+					fprintf("	%s	\n", adr);
+				}
+				if (i<x)
+				{
+					fprintf("	%d	|", id[x]);
+					fprintf("	%s	|", name);
+					fprintf("	%s	|", lname);
+					fprintf("	%d	|", tel[x]);
+					fprintf("	%s	\n", adr);
+				}
+				else if (i>x)
+				{
+					fprintf("	%d	|", id[x]);
+					fprintf("	%s	|", name);
+					fprintf("	%s	|", lname);
+					fprintf("	%d	|", tel[x]);
+					fprintf("	%s	\n", adr);
+				}
+				fclose(fp);
+				fp = fopen("ID.txt", "w+");
+				fscanf(fp, "%d", i);
+				i = i - 1;
+				fprintf(fp, "ID", i);
+				fclose(fp);
+				break;
 				
 		case 'e':
 				system("cls");
