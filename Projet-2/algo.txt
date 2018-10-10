@@ -36,6 +36,7 @@ Si 'a' est choisi, on fait:
  z=z+1
  ecriture sur fichier fp de z
  fermeture de fp
+ interruption du programme;
 
 Si 'b' est choisi, on fait:
  ouverture du document "base.txt" en mode pointé fp
@@ -43,11 +44,12 @@ Si 'b' est choisi, on fait:
  affichage de " id  | nom | prénom  | numero  | mail  "
  affichage de "-----------------------------------------------------------------------------------------------------------"
  commencer boucle à 0 incrémenter de 1 tant que i est inferieur à z
-  prendre les valeur id[1] name lname tel[i] adr
-  affichage de " id[i]  | name | lname  | tel[i]  | adr  "
+  prendre les valeur j name lname k adr
+  affichage de " j  | name | lname  | k  | adr  "
   affichage  de "-----------------------------------------------------------------------------------------------------------"
   fin tant que
  fermeture de fp
+ interruption du programme;
 
 Si 'c' est choisi, on fait:
   utilisation commandes systemes suivante: cls, color a, title Recherche personne (id);
@@ -86,8 +88,12 @@ Si 'd' est choisi, on fait:
  affichage de "donnez un entrée"
  prise donnée utilisateur
  commencer boucle à 0 incrémenter de 1 tant que i est inferieur à z
-  prendre les valeur id[1] name lname tel[i] adr
-  si i=
+  prendre les valeur j name lname k adr
+  si i>x-1 et que i<z
+   ecriture sur fichier fptmp de j name lname k adr
+  fin de si
+  si i>x-1 et que i
+   ecriture sur fichier fptmp de j name lname k adr
 
 Si 'e' est choisi, on fait:
   utilisation commandes systemes suivante: cls, color c, title Supression du repertoire ENTIER, echo SI c'est une erreur fermez cette fenetre, sinon appuyer sur entree et pause;
