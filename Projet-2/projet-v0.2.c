@@ -4,11 +4,12 @@
 int main(void)
 {
 	system("title Gestion de repertoire");
-	FILE *fp;
+	FILE *fp, *fptmp;
 	char choix, nom[50], prenom[50], am[50], c, name[10], lname[10], adr[10];
 	int id[10], tel[10], i, x=0, z;
 
 	fp = fopen("ID.txt", "r");
+	fptmp = fopen("base-tmp.txt", "w");
 	fscanf(fp, "%d", &z);
 	fclose(fp);
 	puts("(a) Ajouter une personne dans le repertoire");
@@ -137,11 +138,11 @@ int main(void)
 					nom[i]=name;
 					prenom[i]=lname;
 					am[i]=adr;
-					fprintf(ft"	%d	|", id[i]);
-					fprintf("	%s	|", name);
-					fprintf("	%s	|", lname);
-					fprintf("	%d	|", tel[i]);
-					fprintf("	%s	\n", adr);
+					fprintf(fptmp, "	%d	|", id[i]);
+					fprintf(fptmp, "	%s	|", name);
+					fprintf(fptmp, "	%s	|", lname);
+					fprintf(fptmp, "	%d	|", tel[i]);
+					fprintf(fptmp, "	%s	\n", adr);
 				}
 				for (i=x+1; i<z; i++)
 				{
@@ -153,11 +154,11 @@ int main(void)
 					nom[i]=name;
 					prenom[i]=lname;
 					am[i]=adr;
-					fprintf("	%d	|", id[i]);
-					fprintf("	%s	|", name);
-					fprintf("	%s	|", lname);
-					fprintf("	%d	|", tel[i]);
-					fprintf("	%s	\n", adr);
+					fprintf(fptmp, "	%d	|", id[i]);
+					fprintf(fptmp, "	%s	|", name);
+					fprintf(fptmp, "	%s	|", lname);
+					fprintf(fptmp, "	%d	|", tel[i]);
+					fprintf(fptmp, "	%s	\n", adr);
 				}
 				if (i<x)
 				{
@@ -182,7 +183,7 @@ int main(void)
 				fprintf(fp, "ID", i);
 				fclose(fp);
 				break;
-				
+
 		case 'e':
 				system("cls");
 				system("color c");
