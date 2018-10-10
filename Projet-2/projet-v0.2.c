@@ -4,8 +4,8 @@
 int main(void)
 {
 	system("title Gestion de repertoire");
-	FILE *fp, *fptmp;
-	char choix, nom[50], prenom[50], am[50], c, name[10], lname[10], adr[10];
+	FILE *fp, *fptmp, *fpo;
+	char choix, nom[50], prenom[50], am[50], c, name[50], lname[50], adr[50];
 	int id[10], tel[10], i, x=0, z;
 
 	fp = fopen("ID.txt", "r");
@@ -119,69 +119,46 @@ int main(void)
 				system("title Supprimer un contact");
 				system("echo.");
 				fp = fopen("base.txt", "r");
+				fpo = fopen("ID.txt", "r");
+				fscanf(fpo, "%d", &z);
+				fclose(fpo);
 				i=0;
 				puts("donnez un entrée");
 				scanf("%d", &x);
-				printf("	id	|");
-				printf("	Nom	|");
-				printf("	prenom	|");
-				printf("	numero		|");
-				printf("	mail	\n");
+				for(i=0; i<z; i++)
+				{
+					fscanf(fp, "%d", &id[i]);
+					fscanf(fp, "%s", &name);
+					fscanf(fp, "%s", &lname);
+					fscanf(fp, "%d", &tel[i]);
+					fscanf(fp, "%s", &adr);
+					nom[i]=name;
+					prenom[i]=lname;
+					am[i]=adr;
+				}
 				puts("-----------------------------------------------------------------------------------------------------------");
 				for (i=0; i<x-1; i++)
 				{
-					fscanf(fp, "%d", &id[i]);
-					fscanf(fp, "%s", &name);
-					fscanf(fp, "%s", &lname);
-					fscanf(fp, "%d", &tel[i]);
-					fscanf(fp, "%s", &adr);
-					nom[i]=name;
-					prenom[i]=lname;
-					am[i]=adr;
-					fprintf(fptmp, "	%d	|", id[i]);
-					fprintf(fptmp, "	%s	|", name);
-					fprintf(fptmp, "	%s	|", lname);
-					fprintf(fptmp, "	%d	|", tel[i]);
-					fprintf(fptmp, "	%s	\n", adr);
+					fprintf(fptmp, "%d ", id[i]);
+					fprintf(fptmp, "%s ", nom[i]);
+					fprintf(fptmp, "%s ", prenom[i]);
+					fprintf(fptmp, "%d ", tel[i]);
+					fprintf(fptmp, "%s \n", am[i]);
 				}
-				for (i=x+1; i<z; i++)
+				for (i=x; i<z; i++)
 				{
-					fscanf(fp, "%d", &id[i]);
-					fscanf(fp, "%s", &name);
-					fscanf(fp, "%s", &lname);
-					fscanf(fp, "%d", &tel[i]);
-					fscanf(fp, "%s", &adr);
-					nom[i]=name;
-					prenom[i]=lname;
-					am[i]=adr;
-					fprintf(fptmp, "	%d	|", id[i]);
-					fprintf(fptmp, "	%s	|", name);
-					fprintf(fptmp, "	%s	|", lname);
-					fprintf(fptmp, "	%d	|", tel[i]);
-					fprintf(fptmp, "	%s	\n", adr);
-				}
-				if (i<x)
-				{
-					fprintf("	%d	|", id[x]);
-					fprintf("	%s	|", name);
-					fprintf("	%s	|", lname);
-					fprintf("	%d	|", tel[x]);
-					fprintf("	%s	\n", adr);
-				}
-				else if (i>x)
-				{
-					fprintf("	%d	|", id[x]);
-					fprintf("	%s	|", name);
-					fprintf("	%s	|", lname);
-					fprintf("	%d	|", tel[x]);
-					fprintf("	%s	\n", adr);
+					fprintf(fptmp, "%d ", id[i]);
+					fprintf(fptmp, "%s ", nom[i]);
+					fprintf(fptmp, "%s ", prenom[i]);
+					fprintf(fptmp, "%d ", tel[i]);
+					fprintf(fptmp, "%s \n", am[i]);
 				}
 				fclose(fp);
-				fp = fopen("ID.txt", "w+");
-				fscanf(fp, "%d", i);
-				i = i - 1;
-				fprintf(fp, "ID", i);
-				fclose(fp);
+				fpo = fopen("ID.txt", "w+");
+				fscanf(fpo, "%d", &z);
+				z = z - 1;
+				fprintf(fpo, "%d", z);
+				fclose(fpo);
 				break;
 
 		case 'e':
