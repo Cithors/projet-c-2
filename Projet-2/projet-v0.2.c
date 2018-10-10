@@ -9,7 +9,7 @@ int main(void)
 	int id[10], tel[10], i, x=0, z;
 
 	fp = fopen("ID.txt", "r");
-	fptmp = fopen("base-tmp.txt", "w");
+	fptmp = fopen("base-tmp.txt", "w+");
 	fscanf(fp, "%d", &z);
 	fclose(fp);
 	puts("(a) Ajouter une personne dans le repertoire");
