@@ -6,7 +6,7 @@ int main(void)
 	system("title Gestion de repertoire");
 	FILE *fp, *fptmp, *fpo;
 	char choix, nom[50], prenom[50], am[50], c, name[50], lname[50], adr[50];
-	int id[10], tel[10], i, x=0, z, j, k;
+	int i, x=0, z, j, k;
 
 	fp = fopen("ID.txt", "r");
 	fptmp = fopen("base-tmp.txt", "w+");
@@ -65,18 +65,18 @@ int main(void)
 				puts("-----------------------------------------------------------------------------------------------------------");
 				for (i=0; i<z; i++)
 				{
-					fscanf(fp, "%d", &id[i]);
+					fscanf(fp, "%d", &j);
 					fscanf(fp, "%s", &name);
 					fscanf(fp, "%s", &lname);
-					fscanf(fp, "%d", &tel[i]);
+					fscanf(fp, "%d", &k);
 					fscanf(fp, "%s", &adr);
 					nom[i]=name;
 					prenom[i]=lname;
 					am[i]=adr;
-					printf("	%d	|", id[i]);
+					printf("	%d	|", j);
 					printf("	%s	|", name);
 					printf("	%s	|", lname);
-					printf("	0%d	|", tel[i]);
+					printf("	0%d	|", k);
 					printf("	%s	\n", adr);
 					puts("-----------------------------------------------------------------------------------------------------------");
 				}
@@ -85,12 +85,17 @@ int main(void)
 
 		case 'c':
 				system("cls");
-				system("title Supprimer un utilisateur");
-				system("color c");
+				system("title Recherche personne (id)");
+				system("color a");
 				fp = fopen("base.txt", "r");
 				i=0;
 				puts("donnez un entr?e");
 				scanf("%d", &x);
+				if(x>z || x<0)
+				{
+					printf("Contact introuvable");
+					break;
+				}
 				printf("	id	|");
 				printf("	Nom	|");
 				printf("	prenom	|");
@@ -99,30 +104,23 @@ int main(void)
 				puts("-----------------------------------------------------------------------------------------------------------");
 				for (i=0; i<x; i++)
 				{
-					fscanf(fp, "%d", &id[i]);
+					fscanf(fp, "%d", &j);
 					fscanf(fp, "%s", &name);
 					fscanf(fp, "%s", &lname);
-					fscanf(fp, "%d", &tel[i]);
+					fscanf(fp, "%d", &k);
 					fscanf(fp, "%s", &adr);
-					nom[i]=name;
-					prenom[i]=lname;
-					am[i]=adr;
 				}
-				printf("	%d	|", id[x]);
+				printf("	%d	|", j);
 				printf("	%s	|", name);
 				printf("	%s	|", lname);
-				printf("	%d	|", tel[x]);
+				printf("	%d	|", k);
 				printf("	%s	\n", adr);
-				printf("	id	|");
-				printf("	Nom	|");
-				printf("	prenom	|");
-				printf("	numero		|");
-				printf("	mail	\n");
 				puts("-----------------------------------------------------------------------------------------------------------");
 				fclose(fp);
 				break;
 		case 'd':
 				system("cls");
+				system("color c");
 				system("title Supprimer un contact");
 				system("echo.");
 				fp = fopen("base.txt", "r");
@@ -139,14 +137,9 @@ int main(void)
 					fscanf(fp, "%s", &lname);
 					fscanf(fp, "%d", &k);
 					fscanf(fp, "%s", &adr);
-					id[i]=j;
-					nom[i]=name;
-					prenom[i]=lname;
-					tel[i]=k;
-					am[i]=adr;
 					if(i>x-1 && i<z)
 					{
-						fprintf(fptmp, "%d ", j-);
+						fprintf(fptmp, "%d ", j-1);
 						fprintf(fptmp, "%s ", name);
 						fprintf(fptmp, "%s ", lname);
 						fprintf(fptmp, "%d ", k);
@@ -184,6 +177,7 @@ int main(void)
 				fscanf(fpo, "%d", &z);
 				z = z - 1;
 				fprintf(fpo, "%d", z);
+				fp = fopen("base.txt", "r");
 				printf("	id	|");
 				printf("	Nom	|");
 				printf("	prenom	|");
@@ -192,22 +186,20 @@ int main(void)
 				puts("-----------------------------------------------------------------------------------------------------------");
 				for (i=0; i<z; i++)
 				{
-					fscanf(fp, "%d", &id[i]);
+					fscanf(fp, "%d", &j);
 					fscanf(fp, "%s", &name);
 					fscanf(fp, "%s", &lname);
-					fscanf(fp, "%d", &tel[i]);
+					fscanf(fp, "%d", &k);
 					fscanf(fp, "%s", &adr);
-					nom[i]=name;
-					prenom[i]=lname;
-					am[i]=adr;
-					printf("	%d	|", id[i]);
+					printf("	%d	|", j);
 					printf("	%s	|", name);
 					printf("	%s	|", lname);
-					printf("	0%d	|", tel[i]);
+					printf("	0%d	|", k);
 					printf("	%s	\n", adr);
 					puts("-----------------------------------------------------------------------------------------------------------");
 				}
 				fclose(fpo);
+				fclose(fp);
 				break;
 
 		case 'e':
@@ -217,7 +209,7 @@ int main(void)
 				system("echo SI c'est une erreur fermez cette fenetre, sinon appuyer sur entree");
 				system("pause");
 				fp = fopen("base.txt", "w");
-				fprintf(fp, " ");
+				fprintf(fp, "");
 				printf("R?pertoire supprim? !");
 				fclose(fp);
 				fp = fopen("ID.txt", "w");
@@ -240,4 +232,4 @@ int main(void)
 				break;
 	}
 	return 0;
-} //Code : Chritopher HOSTIN et Denis REMACLE
+}//Code : Chritopher HOSTIN et Denis REMACLE
