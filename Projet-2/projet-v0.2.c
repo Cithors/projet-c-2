@@ -7,18 +7,18 @@ int main(void)
 	FILE *fp;
 	char choix, nom[50], prenom[50], am[50], c, name[10], lname[10], adr[10];
 	int id[10], tel[10], i, x=0, z;
-	
+
 	fp = fopen("ID.txt", "r");
 	fscanf(fp, "%d", &z);
 	fclose(fp);
 	puts("(a) Ajouter une personne dans le repertoire");
-	puts("(b) Afficher le répertoire");
+	puts("(b) Afficher le rï¿½pertoire");
 	puts("(c) Recherche d'une personne (id)");
 	puts("(d) Supprimer personne du repertoire");
 	puts("(e) Supprimer le repertoire entier");
 	choix = getchar();
 	getchar();
-	
+
 	switch(choix)
 	{
 		case 'a':
@@ -46,7 +46,7 @@ int main(void)
 				fprintf(fp, "%d", z);
 				fclose(fp);
 				break;
-				
+
 		case 'b':
 				system("cls");
 				system("title Affichage du repertoire");
@@ -80,14 +80,14 @@ int main(void)
 				}
 				fclose(fp);
 				break;
-				
+
 		case 'c':
 				system("cls");
 				system("title Supprimer un utilisateur");
 				system("color c");
 				fp = fopen("base.txt", "r");
 				i=0;
-				puts("donnez un entrée");
+				puts("donnez un entrï¿½e");
 				scanf("%d", &x);
 				printf("	id	|");
 				printf("	Nom	|");
@@ -113,6 +113,10 @@ int main(void)
 				printf("	%s	\n", adr);
 				fclose(fp);
 				break;
+		case 'd':
+				system("cls");
+				system("title Supprimer un contact");
+				system("echo.");
 				
 		case 'e':
 				system("cls");
@@ -122,7 +126,7 @@ int main(void)
 				system("pause");
 				fp = fopen("base.txt", "w");
 				fprintf(fp, " ");
-				printf("Répertoire supprimé !");
+				printf("Rï¿½pertoire supprimï¿½ !");
 				fclose(fp);
 				fp = fopen("ID.txt", "w");
 				fprintf(fp, "0");
