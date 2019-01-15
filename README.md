@@ -1,1 +1,1 @@
-# projet-c-2
+# Projet en C (v2)
